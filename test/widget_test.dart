@@ -11,20 +11,26 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_bottom_bar/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('BottomNavigationBar menampilkan halaman yang sesuai saat diklik',
+      (WidgetTester tester) async {
+    // Jalankan aplikasi
+    await tester.pumpWidget(MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Pastikan halaman awal adalah Home
+    expect(find.text('Home Page'), findsOneWidget); // Sesuaikan dengan widget di HomePage
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Tap ikon Favorite
+    await tester.tap(find.byIcon(Icons.favorite));
+    await tester.pumpAndSettle();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Pastikan FavoritePage tampil
+    expect(find.text('Favorite Page'), findsOneWidget); // Sesuaikan dengan widget di FavoritePage
+
+    // Tap ikon Profile
+    await tester.tap(find.byIcon(Icons.account_circle_sharp));
+    await tester.pumpAndSettle();
+
+    // Pastikan ProfilePage tampil
+    expect(find.text('Profile Page'), findsOneWidget); // Sesuaikan dengan widget di ProfilePage
   });
 }
