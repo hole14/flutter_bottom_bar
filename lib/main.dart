@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bottom_bar/ui/FavoritePage/favorite.dart';
 import 'package:flutter_bottom_bar/ui/HomePage/home.dart';
+import 'package:flutter_bottom_bar/ui/NotificationPage/notifikasi.dart';
 import 'package:flutter_bottom_bar/ui/ProfilePage/profile.dart';
 import 'package:flutter_bottom_bar/ui/SettingPage/setting.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent, // Biar transparan
-    statusBarIconBrightness: Brightness.dark, // Atur icon jadi gelap/terang
-  ));
   runApp(MyApp());
 }
 
@@ -35,7 +31,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = [HomePage(), FavoritePage(), ProfilePage()];
+  final List<Widget> _pages = [HomePage(), FavoritePage(), NotifikasiPage()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -83,7 +79,6 @@ class _MainPageState extends State<MainPage> {
               leading: Icon(Icons.logout),
               title: Text('Logout'),
               onTap: () {
-              // Aksi logout
               Navigator.pop(context);
               },
             ),
